@@ -1,0 +1,14 @@
+= form_for(@category, url:  category_path(@category), html: { method: :put }) do |f|
+  = render partial: 'shared/error_messages', resource: @category
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Name
+    .col-sm-10
+      = f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control', placeholder: 'Name'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Options
+    .col-sm-10
+      - @category.options.each do |option|
+        = f.text_field :options, value: option, class: 'form-control mb-2', name: 'options[]'
+  
+  .actions
+    = f.submit 'Update', class: 'btn btn-primary mb-2'

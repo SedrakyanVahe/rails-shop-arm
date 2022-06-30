@@ -1,0 +1,76 @@
+= form_for(@item, url:  item_path(@item), html: { method: :put }) do |f|
+  = render partial: 'shared/error_messages', resource: @item
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Images
+    .col-sm-10
+      = f.file_field :images, multiple: true, class: 'form-control'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Title
+    .col-sm-10
+      = f.text_field :title, autofocus: true, autocomplete: 'title', class: 'form-control', placeholder: 'Title'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Description
+    .col-sm-10
+      = f.text_area :description, class: 'form-control', placeholder: 'Description'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Price
+    .col-sm-10
+      = f.number_field :price, min: 0, class: 'form-control', placeholder: 'Price'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Count
+    .col-sm-10
+      = f.number_field :countity, min: 0, class: 'form-control', placeholder: 'Count'
+  .row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 State
+    .col-sm-10
+      .form-check 
+        = f.radio_button :state, 'normal', class: 'gridRadios1 form-check-input'
+        = f.label :state, 'Normal', class: 'label form-check-label'
+      .form-check 
+        = f.radio_button :state, 'speedily', class: 'gridRadios1 form-check-input'
+        = f.label :state, 'Speedily', class: 'label form-check-label'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Options
+    .col-sm-10
+      - @item.options.each do |option|
+        .d-flex.justify-content-between
+          %b.mr-2.mt-2.mw-20= "#{option.first}"
+          = f.text_field :options, value: option.last, class: 'form-control mb-2', name: "options[#{option.first}]"
+  %hr{style: "height: 5px;"}
+  - if @item.item_resources.present?
+    #exists_item_resources_list
+      = f.fields_for :item_resources do |item_resource| 
+        .item_resource_box
+          = item_resource.hidden_field :resource_type, readonly: true, class: 'exists_item_resource_type'
+          .form-group.row.mb-2
+            %legend.col-form-label.col-sm-2.pt-0 Resource Name
+            .col-sm-10
+              = item_resource.text_field :name, class: 'form-control', placeholder: 'Resource name'
+          .row.mb-2
+            %legend.col-form-label.col-sm-2.pt-0 Resource Type
+            .col-sm-10
+              .form-check
+                = item_resource.radio_button :resource_type, 'link', class: 'exists_link_radio gridRadios1 form-check-input'
+                = item_resource.label :resource_type, 'Link', class: 'label form-check-label'
+              .form-check
+                = item_resource.radio_button :resource_type, 'document', class: 'exists_document_radio gridRadios1 form-check-input'
+                = item_resource.label :resource_type, 'Document', class: 'label form-check-label'
+          .exists_resource_type_link.form-group.row.mb-2
+            %legend.col-form-label.col-sm-2.pt-0 Resource Link
+            .col-sm-10
+              = item_resource.text_field :url, class: 'form-control', placeholder: 'Resource link'
+          .exists_resource_type_document.form-group.row.mb-2
+            %legend.col-form-label.col-sm-2.pt-0 Resource Document
+            .col-sm-10
+              = item_resource.file_field :file, class: 'form-control'
+          %label.btn.btn-outline-danger
+            = item_resource.check_box :_destroy, class: 'delete_resource d-none'
+            Delete
+          %hr
+  %hr{style: "height: 5px;"}
+  = render partial: 'items/item_resources/new'
+  .actions
+    = f.submit 'Update', class: 'btn btn-primary mb-2'
+
+= javascript_include_tag 'items/add_resource' 
+= javascript_include_tag 'items/delete_resource' 

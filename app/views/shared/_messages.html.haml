@@ -1,0 +1,10 @@
+-if flash[:notice]
+  .alert.alert-success.d-flex.justify-content-between
+    %p#notice= notice 
+    %b#close_message.text-dark.c-pointer.mr-8 X
+-if flash[:alert]
+  .alert.alert-danger.d-flex.justify-content-between
+    %p#alert= alert
+    %b#close_message.text-dark.c-pointer.mr-8 X
+
+= javascript_include_tag 'global'

@@ -1,0 +1,53 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  success: 'Successfully updated.'
+  wrong: 'Something went wrong.'
+  negative_value: "can't be negative value."
+  not_found: 'Not found.'
+  not_logged_in: 'You are not logged in.'
+  not_valid: 'Not a valid.'
+  not_valid_file: 'Not a valid file format.'
+  wrong_birth_date: 'Not a valid date.'
+  wrong_age: 'You should be over 10 years old.'
+  wrong_level: 'Should be less than 3.'
+  wrong_option: 'Is too short (minimum is 3 characters).'
+  wrong_countity: "can't be less than 1."
+  created: "%{obj} was successfully created."
+  updated: "%{obj} was successfully updated."
+  destroyed: "%{obj} was successfully destroyed."
+  not_destroyed: 'Not destroyed.'
+  not_allowed: "You are not allowed to update this %{obj}."
+  duplicate: "%{obj} has already been taken."
+  imported: "%{obj} are imported."
+  invalid_email_or_password: 'Invalid email or password'
+  already_sent_request: 'The request already sent'

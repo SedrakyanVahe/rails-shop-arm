@@ -1,0 +1,7 @@
+-if user_signed_in?
+  .d-flex
+    - if @item.owner == current_user
+      = link_to 'Edit', edit_item_path, class: 'btn btn-secondary mb-2'   
+      = button_to 'Delete', item_path(@item), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mb-2 ml-1', method: :delete
+    = link_to 'Export PDF', export_item_path(@item, format: :pdf), class: 'btn btn-success mb-2 ml-1'
+= render 'items/shared/card'

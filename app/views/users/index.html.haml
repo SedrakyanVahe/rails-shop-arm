@@ -1,0 +1,42 @@
+-if user_signed_in?
+  .d-flex.justify-content-between
+    %span#users_count.h3.mt-2= "Total  #{@users[:count]} users"
+    = link_to "Export CSV", export_users_path, class: 'btn btn-outline-success mb-2'
+    .d-flex.justify-content-end.mb-2
+      = form_with(url: users_path, method: 'GET', class: 'd-flex') do |form|
+        = form.text_field(:query, placeholder: 'Search...', class: 'form-control rounded ', id: 'users_search')
+      = link_to 'Reset', users_path, class: 'btn btn-outline-warning'
+  %hr
+  .d-flex.mb-2.mt-2.mr-2
+    = form_tag '', method: :get do
+      %h6 Select Role
+      .d-flex.flex-column.mb-2
+        %label
+          %input{name: 'role', type: 'radio', value: 'buyer'}
+          Buyer
+        %label
+          %input{name: 'role', type: 'radio', value: 'seller'}
+          Seller
+      %h6 Select Gender
+      .d-flex.flex-column
+        %label
+          %input{name: 'gender', type: 'radio', value: 'no_select'}
+          No select
+        %label
+          %input{name: 'gender', type: 'radio', value: 'male'}
+          Male
+        %label
+          %input{name: 'gender', type: 'radio', value: 'female'}
+          Female
+      %br
+      = select_tag :min_age, options_for_select((0..100)), class: 'mb-2', include_blank: true, prompt: 'Select min age'
+      %br
+      = select_tag :max_age, options_for_select((0..100)), include_blank: true, prompt: 'Select max age'
+      %br
+      = submit_tag 'Filter', class: 'btn btn-secondary mt-2'
+      = link_to 'Reset', users_path, class: 'btn btn-outline-warning mt-2'
+    = render 'users_list'
+  = will_paginate @users[:result], renderer: BootstrapPagination::Rails
+
+= javascript_include_tag 'helpers/axios_handler'
+= javascript_include_tag 'users/search'

@@ -1,0 +1,31 @@
+.d-flex
+  .col-md-9.mx-auto
+    .row.product-list
+      - @user_items[:result].each do |user_item|
+        .col-md-2
+          %section.panel.border.mb-2.rounded
+            .pro-img-box.d-flex.justify-content-center
+              - if user_item.item.images.attached?
+                = image_tag(user_item.item.images.first, class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
+              - else 
+                = image_tag('shop.jpg', class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
+            .panel-body.text-center
+              %h5.ellipsis= link_to "#{user_item.item.title}", "#{items_path}/#{user_item.item.id}"
+              %p.ellipsis= "$ #{user_item.item.price}"
+              .d-flex.justify-content-center
+                = form_for user_item do |f|
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.hidden_field :item_id, value: user_item.item.id
+                  = f.hidden_field :ordered_at, value: DateTime.now
+                  = button_tag(type: 'submit', class: 'btn btn-outline-success') do
+                    %i.bi-cart-check-fill
+                = button_to user_item_path(user_item), class: 'btn btn-outline-danger', method: :delete do
+                  %i.bi-cart-dash-fill
+    = will_paginate @user_items[:result], renderer: BootstrapPagination::Rails
+  %div
+    %h5= "My Balance: #{current_user.balance} $"
+    - if current_user.user_items.with_not_ordered.present?
+      %h5= "After buy all: #{current_user.user_items.balance_after_buy_all} $"
+      %h5= "Total price: #{current_user.user_items.total_price} $"
+      = link_to "Buy All", buy_all_user_items_path, class: 'btn btn-success', method: :get
+      = link_to "Delete All", delete_all_user_items_path, class: 'btn btn-danger', method: :get

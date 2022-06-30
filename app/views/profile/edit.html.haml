@@ -1,0 +1,59 @@
+= form_for(current_user, url: profile_path(current_user), html: { method: :put }) do |f|
+  = render partial: 'shared/error_messages', resource: current_user
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Avatar
+    .col-sm-10
+      - if current_user.avatar.present?
+        %small Current: #{current_user.avatar.filename.to_s}
+      = f.file_field :avatar, class: 'form-control' 
+  %fieldset.form-group
+    .row.mb-2
+      %legend.col-form-label.col-sm-2.pt-0 Role
+      .col-sm-10
+        .form-check 
+          = f.radio_button :role, 'buyer', class: 'gridRadios1 form-check-input'
+          = f.label :role, 'Buyer', class: 'label form-check-label'
+        .form-check 
+          = f.radio_button :role, 'seller', class: 'gridRadios1 form-check-input'
+          = f.label :role, 'Seller', class: 'label form-check-label'
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label First name
+    .col-sm-10
+      = f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control'
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Last name
+    .col-sm-10
+      = f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control'
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Email
+    .col-sm-10
+      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+  %fieldset.form-group
+    .row.mb-2
+      %legend.col-form-label.col-sm-2.pt-0 Gender
+      .col-sm-10
+        .form-check 
+          = f.radio_button :gender, 'no_select', class: 'gridRadios1 form-check-input'
+          = f.label :gender, 'No select', class: 'label form-check-label'
+        .form-check 
+          = f.radio_button :gender, 'male', class: 'gridRadios1 form-check-input'
+          = f.label :gender, 'Male', class: 'label form-check-label'
+        .form-check 
+          = f.radio_button :gender, 'female', class: 'gridRadios1 form-check-input'
+          = f.label :gender, 'Female', class: 'label form-check-label'
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Birth date
+    .col-sm-10
+      = f.date_field :birth_date, class: 'form-control'
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Counrty
+    .col-sm-10
+      .select.form-select.mb-3{'aria-label': '.form-select-lg example'}
+        = f.select :country, ['No select', 'Armenia', 'Russia', 'USA', 'UK']
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Phone number
+    .col-sm-10
+      %small Format: 077112233
+      = f.number_field :phone, type: 'tel', class: 'form-control'
+  .actions
+    = f.submit 'Update', class: 'btn btn-primary mb-2'

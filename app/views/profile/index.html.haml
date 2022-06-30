@@ -1,0 +1,4 @@
+-if user_signed_in?
+  = render 'profile/shared/card', user: current_user
+-else
+  %h3= 'You are not signed in'

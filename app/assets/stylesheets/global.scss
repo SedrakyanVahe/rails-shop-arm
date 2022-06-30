@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+.inf-content {
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background: #f1f2f7;
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+header {
+  min-height: 65px;
+}
+
+footer {
+  min-height: 65px;
+  margin-top: auto; 
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination li {
+  color: black;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.pagination li.active {
+  background: #575e57;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination li:hover:not(.active) {
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.m-0 {
+  margin: 0;
+  margin: none;
+}
+
+.ml-1 {
+  margin-left: (5px) !important;
+}
+
+.ml-4 {
+  margin-left: (20px) !important;
+}
+
+.ml-8 {
+  margin-left: (40px) !important;
+}
+
+.mr-2 {
+  margin-right: (10px) !important;
+}
+
+.mr-8 {
+  margin-right: (40px) !important;
+}
+
+.mt-2 {
+  margin-top: (10px) !important;
+}
+
+.mb-2 {
+  margin-bottom: (10px) !important;
+}
+
+.mb-5 {
+  margin-bottom: (25px) !important;
+}
+
+.pr-80 {
+  padding-right: (400px) !important;
+}
+
+.py-3 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+.px-4 {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+.flex-grow-0 {
+  flex-grow: 0 !important;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.mw-20 {
+  min-width: 20%;
+}
+
+.mw-60 {
+  min-width: 60%;
+}
+
+.bg-none {
+  background: none;
+  border: none;
+}
+
+.v-a-top {
+  vertical-align: top;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

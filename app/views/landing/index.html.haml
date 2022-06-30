@@ -1,0 +1,25 @@
+.d-flex
+  .mw-60{style: 'background: #faf7f7'}
+    = render 'items/shared/item_carts'
+    = will_paginate @items[:result], renderer: BootstrapPagination::Rails
+  .mw-20.ml-8 
+    .d-flex.justify-content-end.mb-2
+      = form_with(url: root_path, method: 'GET', class: 'd-flex') do |form|
+        = form.text_field(:query, placeholder: 'Search...', class: 'form-control rounded', id: 'items_search')
+      = link_to 'Reset', root_path, class: 'btn btn-outline-warning'
+    .d-flex.mb-2.mt-2.mr-2
+      = form_tag '', method: :get do
+        #list1.dropdown-check-list.mb-2{tabindex: '100'}
+          %span.anchor Select categories
+          %ul.items
+            - @categories[:result].each do |cat|
+              %li
+                %input{name: 'category_id[]', type: 'checkbox', value: cat.id}>/
+                = " #{cat.name}"
+        %h6 Price range
+        = number_field_tag :min_price, @current_value, min: 0, class: 'number mb-2 form-control rounded', placeholder: 'Select min price'
+        = number_field_tag :max_price, @current_value, min: 0, class: 'number mb-2 form-control rounded', placeholder: 'Select max price'
+        = submit_tag 'Filter',  class: 'btn btn-secondary'
+        = link_to 'Reset', root_path, class: 'btn btn-outline-warning'
+
+= javascript_include_tag 'items/select_categories'

@@ -1,0 +1,48 @@
+#slider {
+  position: relative;
+  overflow: hidden;
+}
+
+#slider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#slider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 350px;
+  height: 300px;
+}
+
+.control_prev, .control_next {
+  position: absolute;
+  top: 20%;
+  z-index: 999;
+  padding: 4% 3%;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.control_prev:hover, a.control_next:hover {
+  opacity: 1;
+}
+
+.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}

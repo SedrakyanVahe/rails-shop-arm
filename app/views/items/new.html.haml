@@ -1,0 +1,52 @@
+= form_with model: @item do |f|
+  = render partial: 'shared/error_messages', resource: @item
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Images
+    .col-sm-10
+      = f.file_field :images, multiple: true, class: 'form-control'
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Category
+    .col-sm-10
+      .select.form-select.mb-3{'aria-label': '.form-select-lg example'}
+        = f.select :category_id, @categories[:result].map { |cat| [cat.name, cat.id] }
+  .form-group.row.mb-2
+    %label.col-sm-2.col-form-label Options
+    #options_id.col-sm-10
+      - @categories[:result].pluck(:id, :options).each do |options_list|
+        .d-none{data: {id: options_list.first}}
+          - options_list.last.each_with_index do |option, index|
+            .d-flex.justify-content-between
+              %b.mr-2.mt-2.mw-20= "#{option}"
+              = f.text_field :options, value: '', class: 'form-control pr-80', placeholder: "Option #{index + 1}", name: "options[#{option}]"
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Title
+    .col-sm-10
+      = f.text_field :title, autofocus: true, autocomplete: 'title', class: 'form-control', placeholder: 'Title'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Description
+    .col-sm-10
+      = f.text_area :description, class: 'form-control', placeholder: 'Description'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Price $
+    .col-sm-10
+      = f.number_field :price, min: 0, class: 'form-control', placeholder: 'Price'
+  .form-group.row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 Count
+    .col-sm-10
+      = f.number_field :countity, min: 0, class: 'form-control', value: 1, placeholder: 'Countity'
+  .row.mb-2
+    %legend.col-form-label.col-sm-2.pt-0 State
+    .col-sm-10
+      .form-check 
+        = f.radio_button :state, 'normal', class: 'gridRadios1 form-check-input'
+        = f.label :state, 'Normal', class: 'label form-check-label'
+      .form-check 
+        = f.radio_button :state, 'speedily', class: 'gridRadios1 form-check-input'
+        = f.label :state, 'Speedily', class: 'label form-check-label'
+  %hr{style: "height: 5px;"}
+  = render partial: 'items/item_resources/new'
+  .actions
+    = f.submit 'Create', class: 'btn btn-primary mb-2', id: 'create_item_btn'
+
+= javascript_include_tag 'items/select_options'
+= javascript_include_tag 'items/add_resource'

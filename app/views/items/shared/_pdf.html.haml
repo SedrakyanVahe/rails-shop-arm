@@ -1,0 +1,42 @@
+- if @item.images.attached? 
+  = image_tag(@item.images.first, style: 'width: 200px; height: 200px')
+- else
+  %h2 NO PHOTO 
+%table.pdf_table
+  %tr
+    %th.pdf_th Title
+    %td.pdf_td= @item.title
+  - if @item.owner_type == 'User'
+    %tr
+      %th.pdf_th Owner / Phone
+      %td.pdf_td= "#{@item.show_owner_full_name} / #{@item.owner.show_phone}"
+  %tr
+    %th.pdf_th Description
+    %td.pdf_td=  @item.show_description
+  %tr
+    %th.pdf_th Price $
+    %td.pdf_td=  @item.price
+  %tr
+    %th.pdf_th Count
+    %td.pdf_td=  @item.countity
+  %tr
+    %th.pdf_th Views
+    %td.pdf_td=  @item.show_views_count
+  %tr
+    %th.pdf_th Rating
+    %td.pdf_td=  @item.rating
+  %tr
+    %th.pdf_th State
+    %td.pdf_td=  @item.show_state
+  %tr
+    %th.pdf_th Options
+    %td.pdf_td= @item.options.map { |k, v| "#{k} : #{v}" }   
+     
+%h3 Category
+%table.pdf_table
+  %tr
+    %th.pdf_th Name
+    %td.pdf_td= @item.category.name
+  %tr
+    %th.pdf_th Owner
+    %td.pdf_td= @item.category.show_owner_full_name

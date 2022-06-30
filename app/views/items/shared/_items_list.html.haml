@@ -1,0 +1,14 @@
+%table#items_table.table.table-striped.ml-8
+  %thead.align-baseline.align-top
+    %tr
+      %th= sortable 'title', 'Title'
+      %th= sortable 'price', 'Price'
+      %th= sortable 'countity', 'Count'
+      %th= sortable 'updated_at', 'Date modified'
+  %tbody#items_table_body
+    - @items[:result].each do |item|
+      %tr.link
+        %td= link_to "#{item.title}", "#{items_path}/#{item.id}"
+        %td= "$ #{item.price}"
+        %td= item.countity
+        %td= item.show_modified_date

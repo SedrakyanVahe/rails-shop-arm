@@ -1,0 +1,38 @@
+.bootstrap.snippets.bootdey
+  .d-flex
+  .panel-body.inf-content
+    .row
+      .col-md-4
+        = image_tag('shop.jpg', class: 'img img-circle img-thumbnail isTooltip', style: 'width: 400px')
+      .col-md-6
+        .table-responsive
+          %table.table.table-user-information
+            %tbody
+              %tr
+              %td
+                %strong
+                  %span.glyphicon.glyphicon-user.text-primary
+                  Name
+              %td.text-primary
+                = @category.name
+              %tr
+                %td
+                  %strong
+                    %span.glyphicon.glyphicon-cloud.text-primary
+                    Parent 
+                %td.text-primary
+                  = @category.show_parent
+              %tr
+                %td
+                  %strong
+                    %span.glyphicon.glyphicon-envelope.text-primary
+                    Owner full name
+                %td.text-primary
+                  = @category.show_owner_full_name
+              %tr
+                %td
+                  %strong
+                    %span.glyphicon.glyphicon-envelope.text-primary
+                    Options
+                %td.text-primary
+                  = select_tag :options, options_for_select((@category.options))

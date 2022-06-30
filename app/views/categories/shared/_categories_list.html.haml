@@ -1,0 +1,12 @@
+%table#categories_table.table.table-striped
+  %thead.align-baseline.align-top
+    %tr
+      %th= sortable 'name', 'Name'
+      %th= sortable 'owner', 'Owner'
+      %th= 'Options'
+  %tbody#categories_table_body
+    - @categories[:result].each do |category|
+      %tr.link{'data-category_id': category.id}
+        %td= link_to "#{category.name}", "#{categories_path}/#{category.id}"
+        %td= category.show_owner_full_name
+        %td#options_list= select_tag :options, options_for_select((category.options))

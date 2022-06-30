@@ -1,0 +1,14 @@
+%h2 Log in
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-group.row.mb-2
+    .col-sm-10
+      = f.text_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: 'Email'
+  .form-group.row.mb-2
+    .col-sm-10
+      = f.password_field :password, autofocus: true, autocomplete: 'current-password', class: 'form-control', placeholder: 'Password'
+  - if devise_mapping.rememberable?
+    .field.mb-2
+      = f.check_box :remember_me
+      = f.label :remember_me
+  .actions
+    = f.submit 'Log in', class: 'btn btn-primary'

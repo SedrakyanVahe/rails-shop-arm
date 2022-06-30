@@ -1,0 +1,23 @@
+.container
+  = render partial: 'shared/error_messages', resource: @category
+  -if current_user.seller?
+    .d-flex.justify-content-start.mb-1
+      = form_tag import_categories_path, multipart: true, class: 'form-inline' do
+        = file_field_tag :file, accept: 'text/csv'
+        = submit_tag 'Import CSV', class: 'btn btn-outline-success'
+      = link_to 'Export sample CSV', export_categories_path, class: 'btn btn-outline-success ml-1'
+  .d-flex.justify-content-between
+    -if current_user.seller?
+      .d-flex.flex-column
+        = link_to 'New Category', new_category_path, class: 'btn btn-secondary mb-2'      
+    %span#categories_count.h3.mt-2= "Total  #{@categories[:count]} categories"
+    .d-flex.justify-content-end.mb-2
+      = form_with(url: categories_path, method: 'GET', class: 'd-flex') do |form|
+        = form.text_field(:query, placeholder: 'Search...', class: 'form-control rounded', id: 'categories_search')
+      = link_to 'Reset', categories_path, class: 'btn btn-outline-warning'
+  %hr
+  = render 'categories/shared/categories_list'
+  = will_paginate @categories[:result], renderer: BootstrapPagination::Rails
+
+= javascript_include_tag 'helpers/axios_handler'
+= javascript_include_tag 'categories/search'
