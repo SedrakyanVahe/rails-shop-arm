@@ -47,11 +47,6 @@ module Modules::Item
       items
     end
 
-    # It's a method that creates a folder for the items pdf's.
-    def create_folder
-      dirname = File.dirname("#{Rails.root}/public/pdf/ ")
-      FileUtils.mkdir_p(dirname) unless Dir.exist?(dirname)
-    end
   end
 
   # It's showing the category of the item.

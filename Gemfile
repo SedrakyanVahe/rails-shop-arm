@@ -26,11 +26,6 @@ gem 'axios_rails', '~> 0.14.0'
 # Paranoia does this by setting a deleted_at field to the current time when you destroy a record, and hides it by scoping all queries on your model to only include records which do not have a deleted_at field.
 gem 'paranoia', '~> 2.6'
 # Wicked is a Rails engine for producing easy wizard controllers
-gem 'wicked', '~> 1.4'
-# Wicked PDF uses the shell utility wkhtmltopdf to serve a PDF file to a user from HTML
-gem 'wicked_pdf', '~> 2.6'
-# Provides binaries for WKHTMLTOPDF project in an easily accessible package.
-gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'
