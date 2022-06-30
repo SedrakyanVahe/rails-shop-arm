@@ -29,8 +29,6 @@ class Item < ApplicationRecord
   validate :images_type
   validate :validate_unique_item_resources
 
-  after_create :send_mail
-
   enum state: {
     normal: 0,
     speedily: 1

@@ -130,12 +130,4 @@ module Modules::Item
     )
   end
 
-  # It's sending an email when created the item.
-  def send_mail
-    ItemMailer.with(
-      user: ApplicationRecord.class_variable_get(:@@logged_in_user),
-      item: self
-    ).item_created.deliver_now
-  end
-
 end
