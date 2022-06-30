@@ -17,7 +17,6 @@ module Modules::User
   included do
     scope :with_role, -> (role) { where(role: role) }
     scope :with_gender, -> (gender) { where(gender: gender) }
-    scope :with_birth_date, -> (min_age, max_age) { where("YEAR(birth_date) BETWEEN ? AND ?", min_age, max_age)}
     scope :with_query, -> (search_query, query) { where(search_query, query: "%#{query}%") }
     scope :except_current_user, -> (id) { where.not(id: id) }
   end
@@ -38,13 +37,6 @@ module Modules::User
       # Filter users by gender
       if Modules::Helpers::to_boolean(params[:gender])
         users = users.with_gender(params[:gender])
-      end
-
-      # Filter users by age
-      if Modules::Helpers::to_boolean(params[:min_age] && params[:max_age])
-        min_age = get_age(params[:min_age])
-        max_age = get_age(params[:max_age])
-        users = users.with_birth_date(max_age, min_age)
       end
 
       # Search users by first_name, last_name and email

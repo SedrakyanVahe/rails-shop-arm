@@ -2,11 +2,7 @@
   .mw-60{style: 'background: #faf7f7'}
     = render 'items/shared/item_carts'
     = will_paginate @items[:result], renderer: BootstrapPagination::Rails
-  .mw-20.ml-8 
-    .d-flex.justify-content-end.mb-2
-      = form_with(url: root_path, method: 'GET', class: 'd-flex') do |form|
-        = form.text_field(:query, placeholder: 'Search...', class: 'form-control rounded', id: 'items_search')
-      = link_to 'Reset', root_path, class: 'btn btn-outline-warning'
+  .mw-20.ml-8
     .d-flex.mb-2.mt-2.mr-2
       = form_tag '', method: :get do
         #list1.dropdown-check-list.mb-2{tabindex: '100'}
