@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     unless @item.destroy
       return redirect_to profile_page_path, alert: t(:not_destroyed)
     end
-    
+
     redirect_to profile_page_path, notice: t(:destroyed, obj: 'Item')
   end
 
@@ -57,12 +57,12 @@ class ItemsController < ApplicationController
   def export_pdf
     Item.create_folder
     filename = "item_#{@item.id}_user_#{current_user.id}"
-  
+
     respond_to do |format|
       format.pdf do
         render pdf: filename,
         template: "items/shared/_pdf.html.haml",
-        save_to_file:  "#{Rails.root}/storage/system/pdf/#{filename}.pdf"
+        save_to_file:  "#{Rails.root}/public/pdf/#{filename}.pdf"
       end
     end
   end
@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
         :id, :name, :resource_type, :url, :file, :_destroy
       ]
     )
-  end  
+  end
 
   def set_items
     @items = Item.paginate_data(params)
