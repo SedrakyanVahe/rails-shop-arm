@@ -9,7 +9,7 @@
   %tbody#users_table_body.align-baseline.align-top
     - @users[:result].each do |user|
       %tr.link{'data-user_id': user.id}
-        %td.d-flex= link_to "#{user.show_full_name}", "#{users_path}/#{user.id}"
+        %td= link_to "#{user.show_full_name}", "#{users_path}/#{user.id}"
         %td.p-2= user.email
         %td= user.show_gender
         %td= user.show_birth_date
