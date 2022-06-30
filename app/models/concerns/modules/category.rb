@@ -10,9 +10,8 @@ module Modules::Category
   class_methods do
     def paginate_data(params)
       categories = Category.all
-
       # It's searching the categories list by name or owner full_name.
-      search_query = "name LIKE :query OR LOWER(JSON_EXTRACT(owner, '$.full_name')) LIKE :query"
+      search_query = "LOWER(name) LIKE LOWER(:query)"
       categories = categories.with_query(search_query, params[:query]) if params[:query].present?
 
       # It's sorting the categories list by name or by owner full_name.

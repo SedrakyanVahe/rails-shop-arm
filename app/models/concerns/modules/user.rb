@@ -40,7 +40,7 @@ module Modules::User
       end
 
       # Search users by first_name, last_name and email
-      search_query = "CONCAT(first_name, ' ', last_name) LIKE :query OR CONCAT(last_name, ' ', first_name) LIKE :query OR email LIKE :query"
+      search_query = "CONCAT(LOWER(first_name), ' ', LOWER(last_name)) LIKE LOWER(:query) OR CONCAT(LOWER(last_name), ' ', LOWER(first_name)) LIKE LOWER(:query) OR LOWER(email) LIKE LOWER(:query)"
       users = users.with_query(search_query, params[:query]) if params[:query].present?
 
       # Sort users by full_name, gender, role

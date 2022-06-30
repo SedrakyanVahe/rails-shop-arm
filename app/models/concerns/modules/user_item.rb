@@ -14,7 +14,7 @@ module Modules::UserItem
 
       user_items = user_items.with_ordered if Modules::Helpers::to_boolean(params[:ordered])
       user_items = user_items.with_not_ordered if Modules::Helpers::to_boolean(params[:not_ordered])
-      
+
       unless Modules::Helpers::to_boolean(params[:all])
         user_items = user_items.paginate(
           page: params[:page] || Modules::Constants::PAGE,
