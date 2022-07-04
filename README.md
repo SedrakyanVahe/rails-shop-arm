@@ -6,5 +6,4 @@
 * Active storage
 * Import / Export CSV
 
-
-[Screenshot-from-2022-07-04-09-50-40.png](https://postimg.cc/YvzNcJRc)
+![Screenshot-from-2022-07-04-09-50-40.png](https://i.postimg.cc/mg0m94Fr/Screenshot-from-2022-07-04-09-50-40.png)
