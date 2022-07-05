@@ -1,24 +1,9 @@
-# README
+# Ruby on rails | Online shop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Authorization / Authentication
+* Pagination
+* Filtering / Sorting / Real time search 
+* Active storage
+* Import / Export CSV
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Screenshot-from-2022-07-04-09-50-40.png](https://i.postimg.cc/mg0m94Fr/Screenshot-from-2022-07-04-09-50-40.png)
