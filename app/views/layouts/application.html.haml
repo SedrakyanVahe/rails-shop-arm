@@ -16,7 +16,6 @@
       = render 'shared/menu'
     = render 'shared/messages'
     %main
-      .container
+      .container.mb-5
         = yield
-    %footer.bg-dark.d-flex.justify-content-center.align-items-center
-      %h3.text-white Footer
+    = render 'shared/footer'

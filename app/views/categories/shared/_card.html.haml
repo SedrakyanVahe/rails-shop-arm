@@ -19,7 +19,7 @@
                 %td
                   %strong
                     %span.glyphicon.glyphicon-cloud.text-primary
-                    Parent 
+                    Parent
                 %td.text-primary
                   = @category.show_parent
               %tr
@@ -35,4 +35,5 @@
                     %span.glyphicon.glyphicon-envelope.text-primary
                     Options
                 %td.text-primary
-                  = select_tag :options, options_for_select((@category.options))
+                  - @category.options.each do |option|
+                    = "#{option}, "

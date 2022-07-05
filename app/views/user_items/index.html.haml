@@ -7,7 +7,7 @@
             .pro-img-box.d-flex.justify-content-center
               - if user_item.item.images.attached?
                 = image_tag(user_item.item.images.first, class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
-              - else 
+              - else
                 = image_tag('shop.jpg', class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
             .panel-body.text-center
               %h5.ellipsis= link_to "#{user_item.item.title}", "#{items_path}/#{user_item.item.id}"
@@ -25,7 +25,7 @@
   %div
     %h5= "My Balance: #{current_user.balance} $"
     - if current_user.user_items.with_not_ordered.present?
-      %h5= "After buy all: #{current_user.user_items.balance_after_buy_all} $"
+      %h5= "After buy all: #{current_user.balance_after_buy_all} $"
       %h5= "Total price: #{current_user.user_items.total_price} $"
       = link_to "Buy All", buy_all_user_items_path, class: 'btn btn-success', method: :get
       = link_to "Delete All", delete_all_user_items_path, class: 'btn btn-danger', method: :get

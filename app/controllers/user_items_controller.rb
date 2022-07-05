@@ -1,6 +1,8 @@
 class UserItemsController < ApplicationController
 
   before_action :set_user_item, only: [:edit, :update, :destroy]
+  before_action :set_card_user_items, only: [:index]
+  before_action :set_order_history_user_items, only: [:order_history]
 
   def index
     @user_items = current_user.user_items.paginate_data(params.merge(not_ordered: true))
@@ -60,7 +62,7 @@ class UserItemsController < ApplicationController
   end
 
   def delete_all
-    if current_user.user_items.with_not_ordered.destroy_all 
+    if current_user.not_ordered_items.destroy_all
       return redirect_to user_items_path, notice: t(:destroyed, obj: 'User items')
     end
 
@@ -79,6 +81,14 @@ class UserItemsController < ApplicationController
 
   def set_user_item
     @user_item = current_user.user_items.find(params[:id])
+  end
+
+  def set_card_user_items
+    @user_items = current_user.user_items.paginate_data(params.merge(not_ordered: true))
+  end
+
+  def set_order_history_user_items
+    @user_items = current_user.user_items.paginate_data(params.merge(ordered: true))
   end
 
 end

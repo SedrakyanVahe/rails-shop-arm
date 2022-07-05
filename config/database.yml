@@ -2,13 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: vahe3
-  password: '123456'
-  host: 127.0.0.1
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
 
 development:
   <<: *default
-  database: rails_shop_am_development
+  database: <%= ENV['DB_NAME_DEV'] %>
 
 test:
   <<: *default
@@ -18,4 +18,4 @@ production:
   <<: *default
   database: rails_shop_am_production
   username: user1
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DB_NAME_PROD'] %>

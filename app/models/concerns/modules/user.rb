@@ -128,6 +128,19 @@ module Modules::User
     self.created_at.to_date
   end
 
+  # Calculating the balance after buying all the items in the user's cart.
+  def balance_after_buy_all
+    self.balance - self.user_items.total_price
+  end
+
+  def ordered_items
+    self.user_items.with_ordered
+  end
+
+  def not_ordered_items
+    self.user_items.with_not_ordered
+  end
+
   # Checking if the user has an avatar attached to it.
   def has_avatar?
     self.avatar.attached?

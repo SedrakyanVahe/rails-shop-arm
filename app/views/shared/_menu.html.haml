@@ -1,6 +1,8 @@
 %nav.navbar.navbar-expand-md.navbar-dark.bg-dark{style: 'padding: 10px 90px '}
   .container-fluid
-    .navbar-collapse
+    %button.navbar-toggler{'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation', 'data-bs-target': '#navbarSupportedContent', 'data-bs-toggle': 'collapse', type: 'button'}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.me-auto
         %li.nav-item
           = link_to 'Home', root_path, class: 'nav-link active'
@@ -8,37 +10,36 @@
           %li.nav-item
             = link_to 'Users', users_path, class: 'nav-link active'
           %li.nav-item
-            = link_to 'Categories', categories_path, class: 'nav-link active'
-    .navbar-collapse
-      %ul.navbar-nav.ms-auto
-        -if user_signed_in?
-          %li.nav-item
-            = button_to  user_items_path, method: :get, class: 'btn btn-outline-light' do
-              %i.bi-cart-fill.me-1
-              Cart
-          %li
-          = button_to order_history_user_items_path, method: :get, class: 'btn btn-outline-light ml-1' do
-            %i.bi-clock-history
-            Order history
-        %li.nav-item.dropdown.align-baseline.align-right
-          -if user_signed_in?
-            %a.nav-link.dropdown-toggle.active{'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#', role: 'button'}= current_user.show_full_name
-          - else
-            %a.nav-link.dropdown-toggle.active{'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#', role: 'button'} Login
-          %ul.dropdown-menu
+          = link_to 'Categories', categories_path, class: 'nav-link active'
+      .navbar-collapse
+        %ul.navbar-nav.ms-auto
+          %li.nav-item.dropdown.align-baseline.align-right
             -if user_signed_in?
-              = link_to profile_page_path, class: 'dropdown-item' do
-                Account
-                %i.bi-person-circle.ml-8
-              %hr.dropdown-divider/
-              = button_to destroy_user_session_path, class: 'dropdown-item', method: :delete do
-                Log out
-                %i.bi-box-arrow-right.ml-8
-            -else
-              = link_to new_user_session_path, class: 'dropdown-item' do
-                Sign in
-                %i.bi-box-arrow-in-right.ml-8
-              %hr.dropdown-divider/
-              = link_to new_user_registration_path, class: 'dropdown-item' do
-                Sign up
-                %i.bi-person-plus-fill.ml-8
+              %a.nav-link.dropdown-toggle.active{'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#', role: 'button'}= current_user.show_full_name
+            - else
+              %a.nav-link.dropdown-toggle.active{'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#', role: 'button'} Login
+            %ul.dropdown-menu
+              -if user_signed_in?
+                = link_to profile_page_path, class: 'dropdown-item d-flex justify-content-between' do
+                  Account
+                  %i.bi-person-circle
+                %hr.dropdown-divider/
+                = button_to user_items_path, method: :get, class: 'd-flex justify-content-between  dropdown-item' do
+                  Cart
+                  %i.bi-cart-fill.me-1
+                %hr.dropdown-divider/
+                = button_to order_history_user_items_path, method: :get, class: 'd-flex justify-content-between  dropdown-item' do
+                  Order history
+                  %i.bi-clock-history
+                %hr.dropdown-divider/
+                = button_to destroy_user_session_path, class: 'd-flex justify-content-between dropdown-item', method: :delete do
+                  Log out
+                  %i.bi-box-arrow-right
+              -else
+                = link_to new_user_session_path, class: 'd-flex justify-content-between dropdown-item' do
+                  Sign in
+                  %i.bi-box-arrow-in-right
+                %hr.dropdown-divider/
+                = link_to new_user_registration_path, class: 'd-flex justify-content-between dropdown-item' do
+                  Sign up
+                  %i.bi-person-plus-fill

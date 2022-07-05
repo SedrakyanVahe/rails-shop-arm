@@ -1,0 +1,52 @@
+
+%footer.section.bg-footer
+  .container
+    .row
+      .col-lg-3
+        %div
+          %h6.footer-heading.text-uppercase.text-white Information
+          %ul.list-unstyled.footer-link.mt-4
+            %li
+              %a{href: '#'} About
+            %li
+              %a{href: '#'} Our Team
+            %li
+              %a{href: '#'} Pricing
+      .col-lg-3
+        %div
+          %h6.footer-heading.text-uppercase.text-white Ressources
+          %ul.list-unstyled.footer-link.mt-4
+            %li
+              %a{href: '#'} Video Tutorial
+            %li
+              %a{href: '#'} Shop API
+            %li
+              %a{href: '#'} Term & Service
+      .col-lg-2
+        %div
+          %h6.footer-heading.text-uppercase.text-white Help
+          %ul.list-unstyled.footer-link.mt-4
+            %li
+              = link_to 'Sign Up', new_user_registration_path
+            %li
+              = link_to 'Login', new_user_session_path
+            %li
+              %a{href: '#'} Privacy Policy
+      .col-lg-4
+        %div
+          %h6.footer-heading.text-uppercase.text-white Contact Us
+          %p.contact-info.mt-4 Contact us if need help with anything
+          %p.contact-info +374 777777
+          .mt-5
+            %ul.list-inline
+              %li.list-inline-item
+                %a{href: 'https://www.facebook.com/vahe.sedrakyan.142', target: '_blank'}
+                  %i.fab.facebook.footer-social-icon.fa-facebook-f.bi.bi-facebook
+              %li.list-inline-item
+                %a{href: 'https://twitter.com/Vahe93435013', target: '_blank'}
+                  %i.fab.twitter.footer-social-icon.fa-twitter.bi.bi-twitter
+              %li.list-inline-item
+                %a{href: 'https://github.com/SedrakyanVahe', target: '_blank'}
+                  %i.fab.apple.footer-social-icon.fa-apple.bi.bi-github
+  .text-center.mt-5
+    %p.footer-alt.mb-0.f-14 2022 © StDev, All Rights Reserved 

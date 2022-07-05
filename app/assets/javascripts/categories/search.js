@@ -30,23 +30,10 @@ window.onload = function () {
       let name = row.insertCell(0);
       let owner = row.insertCell(1);
       let options = row.insertCell(2);
-      name.innerHTML = `<td><a href="categories/${category.id}"> ${category.name} </a> </td> `;
+      name.innerHTML = `<td><a href="categories/${category.id}"> ${category.name}</a></td>`;
       owner.innerHTML = `<td>${category.owner.full_name}</td>`;
       options.id = 'options_list';
-      options.innerHTML = `<td id="options_list"> 
-        <select id="options" name="options">
-        </select>
-      </td> `;
-
-      let options_list_select = document.querySelector('#options_list  select');
-      let options_array = category.options;
-      options_list_select.innerHTML = '';
-
-      // Looping through the options and adding them to the select element.
-      for (let j = 0; j < options_array.length; j++) {
-        let opt = options_array[j];
-        options_list_select.innerHTML += '<option value="' + opt + '">' + opt + '</option>';
-      }
+      options.innerHTML = `<td>${category.options}</td>`;
     }
   }
 

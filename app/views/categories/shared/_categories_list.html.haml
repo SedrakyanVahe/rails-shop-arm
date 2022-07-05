@@ -9,4 +9,6 @@
       %tr.link{'data-category_id': category.id}
         %td= link_to "#{category.name}", "#{categories_path}/#{category.id}"
         %td= category.show_owner_full_name
-        %td#options_list= select_tag :options, options_for_select((category.options))
+        %td
+          - category.options.each do |option|
+            = "#{option}, "
