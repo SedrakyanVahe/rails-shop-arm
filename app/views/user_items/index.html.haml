@@ -1,15 +1,15 @@
 .d-flex
   .col-md-9.mx-auto
-    .row.product-list
+    .row
       - @user_items[:result].each do |user_item|
         .col-md-2
-          %section.panel.border.mb-2.rounded
+          %section.border.mb-2.rounded
             .pro-img-box.d-flex.justify-content-center
               - if user_item.item.images.attached?
                 = image_tag(user_item.item.images.first, class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
               - else
                 = image_tag('shop.jpg', class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
-            .panel-body.text-center
+            .text-center
               %h5.ellipsis= link_to "#{user_item.item.title}", "#{items_path}/#{user_item.item.id}"
               %p.ellipsis= "$ #{user_item.item.price}"
               .d-flex.justify-content-center

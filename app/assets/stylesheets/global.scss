@@ -6,6 +6,24 @@
   list-style: none;
 }
 
+.btn:hover {
+  text-decoration: none;
+}
+
+.csv-upload > input {
+  display: none;
+}
+
+.upload-button {
+  padding: 10px;
+  font-size: 25px;
+}
+
+.upload-button:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
 .inf-content {
   border: 1px solid #dddddd;
   -webkit-border-radius: 10px;

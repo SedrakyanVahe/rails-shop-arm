@@ -29,8 +29,9 @@
           %input{name: 'gender', type: 'radio', value: 'female'}
           Female
       %br
-      = submit_tag 'Filter', class: 'btn btn-secondary mt-2'
-      = link_to 'Reset', users_path, class: 'btn btn-outline-warning mt-2'
+      .d-flex
+        = submit_tag 'Filter', class: 'btn btn-secondary mt-2'
+        = link_to 'Reset', users_path, class: 'btn btn-outline-warning mt-2 ml-1'
     = render 'users_list'
   = will_paginate @users[:result], renderer: BootstrapPagination::Rails
 

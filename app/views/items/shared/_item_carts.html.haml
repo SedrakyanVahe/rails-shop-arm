@@ -2,13 +2,13 @@
   - @items[:result].each do |item|
     - if item.countity > 0
       .col-md-6
-        %section.panel.border.mb-2.rounded
+        %section.border.mb-2.rounded
           .pro-img-box.d-flex.justify-content-center
             - if item.images.attached?
               = image_tag(item.images.first, class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
-            - else 
+            - else
               = image_tag('shop.jpg', class: 'img img-circle img-thumbnail isTooltip', style: 'width: 170px; height: 150px;')
-          .panel-body.text-center
+          .text-center
             %h5.ellipsis= link_to "#{item.title}", "#{items_path}/#{item.id}"
             .d-flex.justify-content-center
               %p= "Count: #{item.countity} | "

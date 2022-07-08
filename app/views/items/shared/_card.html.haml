@@ -1,6 +1,6 @@
 .bootstrap.snippets.bootdey
   .d-flex
-  .panel-body.inf-content
+  .inf-content
     .row
       .col-md-4
         - if @item.images.attached? && @item.images.count == 1
@@ -19,7 +19,7 @@
         .table-responsive
           %table.table.table-user-information
             %tbody
-              - if user_signed_in? && !@item.get_rated_user 
+              - if user_signed_in? && !@item.get_rated_user
                 %tr
                   %td
                     %strong
@@ -43,7 +43,7 @@
                 %td
                   %strong
                     %span.glyphicon.glyphicon-cloud.text-primary
-                    Category 
+                    Category
                 %td.text-primary
                   = @item.show_category
               - if @item.owner_type == 'User'
@@ -68,15 +68,15 @@
                     %span.glyphicon.glyphicon-envelope.text-primary
                     Price
                 %td.text-primary
-                  = @item.price 
-                  %b $                       
+                  = @item.price
+                  %b $
               %tr
                 %td
                   %strong
                     %span.glyphicon.glyphicon-envelope.text-primary
                     Count
                 %td.text-primary
-                  = @item.countity      
+                  = @item.countity
               %tr
                 %td
                   %strong
@@ -90,14 +90,14 @@
                     %span.glyphicon.glyphicon-envelope.text-primary
                     Rating
                 %td.text-primary
-                  = @item.rating              
+                  = @item.rating
               %tr
                 %td
                   %strong
                     %span.glyphicon.glyphicon-envelope.text-primary
                     State
                 %td.text-primary
-                  = @item.show_state  
+                  = @item.show_state
               - if @item.options.present?
                 %tr
                   %td
@@ -105,7 +105,7 @@
                       %span.glyphicon.glyphicon-envelope.text-primary
                       Options
                   %td.text-primary
-                    = select_tag :options, options_for_select(@item.options.map { |k, v| ["#{k} : #{v}"] }) 
+                    = select_tag :options, options_for_select(@item.options.map { |k, v| ["#{k} : #{v}"] })
                 - if @item.item_resources.present?
                   - @item.item_resources.each do |item_resource|
                     %tr
@@ -122,6 +122,6 @@
                         - elsif item_resource.document?
                           %small.text-dark Click to download
                           %br/
-                          %b= link_to link_to item_resource.name, rails_blob_path(item_resource.file, disposition: 'attachment')           
+                          %b= link_to link_to item_resource.name, rails_blob_path(item_resource.file, disposition: 'attachment')
 
 = javascript_include_tag 'items/images_slider'
