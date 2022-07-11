@@ -48,8 +48,7 @@
   .form-group.row.mb-2
     %label.col-sm-2.col-form-label Counrty
     .col-sm-10
-      .select.form-select.mb-3{'aria-label': '.form-select-lg example'}
-        = f.select :country, ['No select', 'Armenia', 'Russia', 'USA', 'UK']
+      = f.select :country, options_for_select(['No select', 'Armenia', 'Russia', 'USA', 'UK']), {}, { class: "form-control select form-select mb-3" }
   .form-group.row.mb-2
     %label.col-sm-2.col-form-label Phone number
     .col-sm-10

@@ -7,8 +7,8 @@
   .form-group.row.mb-2
     %label.col-sm-2.col-form-label Category
     .col-sm-10
-      #category_select.select.form-select{'aria-label': '.form-select-lg example'}
-        = f.select :parent_id,  Category.all.map { |cat| [cat.name, cat.id, {'data-level': cat.level } ] }, prompt: 'Select category'
+      .category_select{'aria-label': '.form-select-lg example'}
+        = f.select :parent_id, Category.all.map { |cat| [cat.name, cat.id, {'data-level': cat.level } ] }, prompt: 'Select category'
   .form-group.row.mb-2
     %label.col-sm-2.col-form-label Options
     #options_list.col-sm-10

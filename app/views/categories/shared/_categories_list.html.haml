@@ -2,7 +2,7 @@
   %thead.align-baseline.align-top
     %tr
       %th= sortable 'name', 'Name'
-      %th= sortable 'owner', 'Owner'
+      %th= 'Owner'
       %th= 'Options'
   %tbody#categories_table_body
     - @categories[:result].each do |category|

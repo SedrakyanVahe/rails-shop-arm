@@ -30,7 +30,8 @@
                       = f.hidden_field :user_id, value: current_user.id
                       = f.hidden_field :item_id, value: @item.id
                       .d-flex
-                        = f.select :value, options_for_select((0..5))
+                        .category_select
+                          = f.select :value, options_for_select((0..5))
                         = f.submit 'Rate', class: 'btn btn-outline-primary ml-1'
               %tr
                 %td
@@ -105,7 +106,8 @@
                       %span.glyphicon.glyphicon-envelope.text-primary
                       Options
                   %td.text-primary
-                    = select_tag :options, options_for_select(@item.options.map { |k, v| ["#{k} : #{v}"] })
+                    .category_select
+                      = select_tag :options, options_for_select(@item.options.map { |k, v| ["#{k} : #{v}"] })
                 - if @item.item_resources.present?
                   - @item.item_resources.each do |item_resource|
                     %tr
